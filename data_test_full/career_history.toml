@@ -1,0 +1,93 @@
+[profile]
+name = "AAAA　BBBB"
+career_summary = """
+CCCC
+DDDD
+
+EEEE
+FFFF
+GGGG
+
+HHHH
+"""
+
+[[profile.skills]]
+caption = "IIII"
+items = ["JJJJ", "KKKK"]
+
+[[profile.skills]]
+caption = "LLLL"
+items = ["MMMM", "NNNN", "OOOO"]
+
+[[profile.links]]
+text = "PPPP"
+url = "QQQQ"
+
+[[profile.links]]
+url = "RRRR"
+
+[[career_histories]]
+company = "SSSS"
+term = "TTTT"
+summary = "UUUU"
+
+[[career_histories.works]]
+name = "VVVV"
+term = "WWWW"
+role = "XXXX"
+stacks = ["YYYY", "ZZZZ"]
+desc = """
+AAAA
+BBBB
+CCCC
+"""
+
+[[career_histories.works]]
+name = "DDDD"
+term = "EEEE"
+role = "FFFF"
+stacks = ["GGGG", "HHHH", "IIII"]
+desc = """
+JJJJ
+KKKK
+LLLL
+MMMM
+"""
+
+[[career_histories]]
+company = "NNNN"
+term = "OOOO"
+summary = "PPPP"
+
+[[career_histories.works]]
+name = "QQQQ"
+term = "RRRR"
+role = "SSSS"
+stacks = ["TTTT", "UUUU"]
+desc = """
+VVVV
+WWWW
+"""
+
+[[career_histories.works]]
+name = "XXXX"
+term = "YYYY"
+role = "ZZZZ"
+stacks = []
+desc = """
+"""
+
+[promotion]
+desc = """
+AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC DDDDDDDDDD EEEEEEEEEE FFFFFFFFFF
+GGGGGGGGGG HHHHHHHHHH IIIIIIIIII JJJJJJJJJJ KKKKKKKKKK LLLLLLLLLL
+MMMMMMMMMM NNNNNNNNNN OOOOOOOOOO PPPPPPPPPP QQQQQQQQQQ RRRRRRRRRR
+SSSSSSSSSS TTTTTTTTTT UUUUUUUUUU VVVVVVVVVV WWWWWWWWWW XXXXXXXXXX
+YYYYYYYYYY ZZZZZZZZZZ
+
+AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC DDDDDDDDDD EEEEEEEEEE FFFFFFFFFF
+GGGGGGGGGG HHHHHHHHHH IIIIIIIIII JJJJJJJJJJ KKKKKKKKKK LLLLLLLLLL
+MMMMMMMMMM NNNNNNNNNN OOOOOOOOOO PPPPPPPPPP QQQQQQQQQQ RRRRRRRRRR
+SSSSSSSSSS TTTTTTTTTT UUUUUUUUUU VVVVVVVVVV WWWWWWWWWW XXXXXXXXXX
+YYYYYYYYYY ZZZZZZZZZZ
+"""

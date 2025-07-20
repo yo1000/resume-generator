@@ -1,0 +1,745 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>職務経歴書</title>
+    <style>
+        html {
+            width: calc(210mm - 10mm - 10mm);
+            height: calc(297mm - 10mm - 10mm);
+            margin: 0;
+
+            font-family: "Noto Serif JP", serif;
+            font-size: 10.5pt;
+        }
+
+        code {
+            font-family: "Noto Sans Mono", monospace, "Noto Sans JP", sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .profile {
+            margin-left: 8px;
+            border-collapse: collapse;
+            margin-top: 22px;
+            margin-bottom: 20px;
+        }
+
+        .profile tbody tr > * {
+            border-bottom: 1px #000 solid;
+        }
+
+        .profile tbody tr > td:nth-of-type(1) {
+            border-right: 1px #000 solid;
+        }
+
+        .profile tbody > tr.fullname > * {
+            border-top: 2px #000 solid;
+        }
+
+        .profile tbody > tr:last-of-type {
+            border-bottom: 2px #000 solid;
+        }
+
+        .profile tbody > tr th:first-of-type {
+            border-left: 2px #000 solid;
+        }
+
+        .profile tbody > tr td:last-of-type {
+            border-right: 2px #000 solid;
+        }
+
+        .profile tbody th {
+            width: 75px;
+            font-weight: normal;
+            text-align: left;
+            padding: 0 0 0 7px;
+        }
+
+        .profile tbody td:nth-of-type(1) {
+            width: 614px;
+        }
+
+        .profile tbody td:nth-of-type(2) {
+            width: 161px;
+        }
+
+        .title {
+            position: relative;
+        }
+
+        .title h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            margin: auto;
+            vertical-align: middle;
+
+            left: 6px;
+            top: -7px;
+            letter-spacing: 3px;
+        }
+
+        .title div {
+            font-size: 10.5pt;
+            display: inline-block;
+            position: absolute;
+
+            margin: auto;
+            vertical-align: middle;
+
+            top: 1px;
+            right: 6px;
+        }
+
+        .title div span {
+            display: inline-block;
+            position: relative;
+
+            text-align: right;
+        }
+
+        .title div span:nth-of-type(1) {
+            left: -2px;
+            width: 40px;
+        }
+
+        .title div span:nth-of-type(2) {
+            left: 0;
+        }
+
+        .title div span:nth-of-type(3) {
+            left: 0;
+            width: 20px;
+        }
+
+        .title div span:nth-of-type(4) {
+            left: 1px;
+        }
+
+        .title div span:nth-of-type(5) {
+            left: 4px;
+            width: 20px;
+        }
+
+        .title div span:nth-of-type(6) {
+            left: 2px;
+        }
+
+        .profile .fullname {
+            height: 30px;
+            font-size: 12px;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .profile .fullname th {
+            font-size: 12px;
+        }
+
+        .profile .summary,
+        .profile .skills,
+        .profile .links {
+            height: 30px;
+            font-size: 11px;
+        }
+
+        .profile .summary th,
+        .profile .skills th,
+        .profile .links th {
+            font-size: 12px;
+        }
+
+        .profile .summary td,
+        .profile .skills td,
+        .profile .links td {
+            font-size: 11px;
+            vertical-align: top;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        .profile .summary td p {
+            padding: 0 6px 0 0;
+        }
+
+        .profile .links td ul {
+            padding: 0;
+            list-style: none;
+            margin: 0 0 4px;
+        }
+
+        .profile .links td ul li {
+            margin-bottom: 2px;
+        }
+
+        .profile .links td ul a {
+            padding: 0;
+            list-style: none;
+            margin: 0 0 6px;
+            text-decoration: none;
+        }
+
+        .profile .skills p span:nth-of-type(n + 2)::before {
+            content: ",";
+            display: inline-block;
+            position: relative;
+            padding-right: 2px;
+        }
+
+        h2 {
+            margin-left: 8px;
+
+            font-weight: 600;
+            font-size: 16px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 4px;
+            padding-left: 8px;
+            width: 694px;
+        }
+
+        .career_histories .job {
+            margin-top: 2px;
+        }
+
+        .career_histories .job h3 {
+            margin-left: 14px;
+            margin: 14px 0 4px 14px;
+            width: 678px;
+            font-weight: normal;
+            font-size: 12px;
+        }
+
+        .career_histories .job .summary table {
+            font-size: 10px;
+            margin: 0 0 14px 12px;
+        }
+
+        .career_histories .job .summary table th {
+            font-weight: normal;
+            width: 48px;
+            text-align: left;
+        }
+
+        .career_histories .job .works::after {
+            content: '';
+            border: 1px solid #fff;
+            width: 7px;
+            height: 7px;
+            border-radius: 100%;
+            display: inline-block;
+            background-color: #fff;
+            left: 15px;
+            position: relative;
+        }
+
+        .career_histories .job .works .log {
+            max-width: 682px;
+            margin-left: 3px;
+            border-left: 1px solid #000;
+            padding-bottom: 32px;
+            padding-left: 8px;
+
+            left: 16px;
+            top: 8px;
+            position: relative;
+        }
+
+        /* Use only when making it similar to git-log. */
+        /*
+        .career_histories .job .works .log:last-of-type {
+            border-color: #fff;
+        }
+        */
+
+        .career_histories .job .works .log h4 {
+            position: relative;
+            left: -13px;
+            top: -12px;
+            margin: 0;
+
+            font-weight: normal;
+            font-size: 12px;
+        }
+
+        .career_histories .job .works .log h4::before {
+            content: '';
+            border: 1px solid #000;
+            width: 7px;
+            height: 7px;
+            border-radius: 100%;
+            display: inline-block;
+            margin-right: 6px;
+            background-color: #fff;
+        }
+
+        .career_histories .job .works .log table {
+            font-size: 11px;
+            text-align: left;
+            margin: 0 0 12px 2px;
+        }
+
+        .career_histories .job .works .log table * {
+            vertical-align: top;
+        }
+
+        .career_histories .job .works .log table th {
+            font-weight: normal;
+            width: 80px;
+        }
+
+        .career_histories .job .works .log table th::after {
+            content: ':';
+        }
+
+        .career_histories .job .works .log table td code {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 0 2px;
+            font-size: 10px;
+            margin-right: 2px;
+            display: inline-block;
+            margin-bottom: 1px;
+        }
+
+        .career_histories .job .works .log p {
+            margin: 0 0 0 16px;
+            font-size: 11px;
+            word-break: break-all;
+        }
+
+        .pr {
+            border-collapse: collapse;
+            margin: 14px;
+        }
+
+        .pr td {
+            width: 684px;
+            font-size: 11px;
+            padding: 0;
+        }
+    </style>
+    <style>
+        {{{font_style}}}
+    </style>
+</head>
+<body>
+
+<!--
+{{!--
+-->
+<img alt="tracing-source1" src="tracing-source1.png"
+    style="
+        width: 190mm;
+        position:absolute;
+        top: 0;
+        left: 0;
+        z-index: -1000;
+        opacity: 0.5;
+    ">
+<!--
+--}}
+-->
+
+<table class="profile">
+    <thead>
+    <tr>
+        <td class="title" colspan="2">
+            <h1>職務経歴書</h1>
+            <div>
+                <span>{{y}}</span>
+                <span>年</span>
+                <span>{{m}}</span>
+                <span>月</span>
+                <span>{{d}}</span>
+                <span>日現在</span>
+            </div>
+        </td>
+    </tr>
+    </thead>
+    <!--
+    {{#with profile}}
+    -->
+    <tbody>
+    <tr class="fullname">
+        <th>氏名</th>
+        <td>{{name}}</td>
+    </tr>
+    <tr class="summary">
+        <th>職務要約</th>
+        <td>
+            <!--
+            {{#each career_summaries}}
+            -->
+            <p>{{{this}}}</p>
+            <!--
+            {{/each}}
+            -->
+        </td>
+    </tr>
+    <tr class="skills">
+        <th>経験スキル</th>
+        <td>
+            <!--
+            {{#each skills}}
+            -->
+            <p>
+                {{caption}}<br>
+                <!--
+                {{#each items}}
+                --><span>{{this}}</span><!--
+                {{/each}}
+                -->
+            </p>
+            <!--
+            {{/each}}
+            -->
+            <!--
+            {{!--
+            -->
+            <p>
+                ○○○○○<br>
+                XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX,
+                XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX,
+                XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX,
+                XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX
+            </p>
+            <p>
+                ○○○○○<br>
+                XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX,
+                XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX, XXXX
+            </p>
+            <!--
+            --}}
+            -->
+        </td>
+    </tr>
+    <tr class="links">
+        <th>リンク</th>
+        <td>
+            <!--
+            {{#if links_not_empty}}
+            -->
+            <ul>
+                <!--
+                {{#each links}}
+                -->
+                <li><a href="{{url}}">{{text}}</a></li>
+                <!--
+                {{/each}}
+                -->
+
+                <!--
+                {{!--
+                -->
+                <li><a href="#">https://localhost/</a></li>
+                <li><a href="#">https://localhost/</a></li>
+                <!--
+                --}}
+                -->
+            </ul>
+            <!--
+            {{/if}}
+            -->
+        </td>
+    </tr>
+    </tbody>
+    <!--
+    {{/with}}
+    -->
+</table>
+
+<!--
+{{#with career_histories}}
+-->
+<h2>職務内容</h2>
+<div class="career_histories">
+    <!--
+    {{#each this}}
+    -->
+    <div class="job">
+        <!--
+        {{#if company}}
+        -->
+        <h3>{{company}}</h3>
+        <!--
+        {{/if}}
+        -->
+
+        <!--
+        {{#if term_or_summary}}
+        -->
+        <section class="summary">
+            <table>
+                <tbody>
+                <!--
+                {{#if term}}
+                -->
+                <tr>
+                    <th>在籍期間</th>
+                    <td>{{term}}</td>
+                </tr>
+                <!--
+                {{/if}}
+                -->
+
+                <!--
+                {{#if summary}}
+                -->
+                <tr>
+                    <th></th>
+                    <td>{{summary}}</td>
+                </tr>
+                <!--
+                {{/if}}
+                -->
+                </tbody>
+            </table>
+        </section>
+        <!--
+        {{/if}}
+        -->
+
+        <!--
+        {{#if works_not_empty}}
+        -->
+        <section class="works">
+            <!--
+            {{#each works}}
+            -->
+            <div class="log">
+                <!--
+                {{#if name_or_term}}
+                -->
+                <h4>
+                    <!--
+                    {{#if name}}
+                    -->
+                    {{name}}
+                    <!--
+                    {{/if}}
+                    -->
+
+                    (<!--
+                    {{#if term}}
+                    -->{{term}}<!--
+                    {{/if}}
+                    -->)
+                </h4>
+                <!--
+                {{/if}}
+                -->
+
+                <!--
+                {{#if role_or_stacks}}
+                -->
+                <table>
+                    <tbody>
+                    <!--
+                    {{#if role}}
+                    -->
+                    <tr>
+                        <th>担当</th>
+                        <td>{{role}}</td>
+                    </tr>
+                    <!--
+                    {{/if}}
+                    -->
+
+                    <!--
+                    {{#if stacks_not_empty}}
+                    -->
+                    <tr>
+                        <th>技術スタック</th>
+                        <td>
+                            <!--
+                            {{#each stacks}}
+                            --><code>{{this}}</code><!--
+                            {{/each}}
+                            -->
+                        </td>
+                    </tr>
+                    <!--
+                    {{/if}}
+                    -->
+                    </tbody>
+                </table>
+                <!--
+                {{/if}}
+                -->
+
+                <!--
+                {{#if desc}}
+                -->
+                <p>
+                    {{{desc}}}
+                </p>
+                <!--
+                {{/if}}
+                -->
+            </div>
+            <!--
+            {{/each}}
+            -->
+
+            <!--
+            {{!--
+            -->
+            <div class="log">
+                <h4>○○○○○ ○○○○○ ○○○○○ (8888年88月 - 現在)</h4>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>担当</th>
+                        <td>○○○○○ ○○○○○</td>
+                    </tr>
+                    <tr>
+                        <th>技術スタック</th>
+                        <td><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                </p>
+            </div>
+            <!--
+            --}}
+            -->
+        </section>
+        <!--
+        {{/if}}
+        -->
+    </div>
+    <!--
+    {{/each}}
+    -->
+
+    <!--
+    {{!--
+    -->
+    <div class="job">
+        <h3>○○○○○ ○○○○○○○○○○</h3>
+        <section class="summary">
+            <table>
+                <tbody>
+                <tr>
+                    <th>在籍期間</th>
+                    <td>8888年88月 - 現在</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="works">
+            <div class="log">
+                <h4>○○○○○ ○○○○○ ○○○○○ (8888年88月 - 8888年88月)</h4>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>担当</th>
+                        <td>○○○○○ ○○○○○</td>
+                    </tr>
+                    <tr>
+                        <th>技術スタック</th>
+                        <td><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。<br>
+                </p>
+            </div>
+
+            <div class="log">
+                <h4>○○○○○ ○○○○○ ○○○○○ (8888年88月 - 8888年88月)</h4>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>担当</th>
+                        <td>○○○○○ ○○○○○</td>
+                    </tr>
+                    <tr>
+                        <th>技術スタック</th>
+                        <td><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code
+                            >XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code
+                        >XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code
+                        >XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code
+                        >XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code
+                        >XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code><code>XXXX</code></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>
+                    ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○。○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○。○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○。<br>
+                    ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○。○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○。<br>
+                </p>
+            </div>
+        </section>
+    </div>
+    <!--
+    --}}
+    -->
+</div>
+<!--
+{{/with}}
+-->
+
+<!--
+{{#with promotion}}
+-->
+<!--
+{{#if desc}}
+-->
+<h2>自己PR</h2>
+<table class="pr">
+    <tbody>
+    <tr>
+        <td>
+            <!--
+            {{#each descs}}
+            --><p>{{{this}}}</p><!--
+            {{/each}}
+            -->
+
+            <!--
+            {{!--
+            -->
+            <p>
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+            </p>
+            <p>
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+                ○○○○○○○○○○○○○○○○○○○○、○○○○○○○○○○○○○○○○○○○○。
+            </p>
+            <!--
+            --}}
+            -->
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!--
+{{/if}}
+-->
+<!--
+{{/with}}
+-->
+
+</body>
+</html>

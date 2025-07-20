@@ -1,0 +1,934 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>履歴書</title>
+    <style>
+        html {
+            width: calc(210mm - 10mm - 10mm);
+            height: calc(297mm - 10mm - 10mm);
+            margin: 0;
+
+            font-family: "Noto Serif JP";
+            font-size: 10.5pt;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .page1 table,
+        .page2 table {
+            margin-left: 8px;
+            border-collapse: collapse;
+        }
+
+        .contact {
+            border-collapse: collapse;
+            margin-top: 22px;
+            margin-bottom: 20px;
+        }
+
+        .contact tbody tr > * {
+            border-bottom: 1px #000 solid;
+        }
+
+        .contact tbody tr > td:nth-of-type(1) {
+            border-right: 1px #000 solid;
+        }
+
+        .contact tbody tr.fullname-furigana > *,
+        .contact tbody tr.address-primary-furigana > *,
+        .contact tbody tr.address-secondary-furigana > * {
+            border-bottom: 1px #000 dashed;
+        }
+
+        .contact tbody tr.address-primary-postalcode > *,
+        .contact tbody tr.address-primary-furigana td:nth-of-type(2),
+        .contact tbody tr.address-secondary-postalcode > *,
+        .contact tbody tr.address-secondary-furigana td:nth-of-type(2) {
+            border-bottom: 0;
+        }
+
+        .contact tbody > tr.fullname-furigana > *,
+        .contact tbody > tr.birth-gender > td:nth-of-type(2) {
+            border-top: 2px #000 solid;
+        }
+
+        .contact tbody > tr:last-of-type {
+            border-bottom: 2px #000 solid;
+        }
+
+        .contact tbody > tr th:first-of-type {
+            border-left: 2px #000 solid;
+        }
+
+        .contact tbody > tr td:last-of-type {
+            border-right: 2px #000 solid;
+        }
+
+        .contact tbody th,
+        .contact tbody td {
+            line-height: 1.5rem;
+        }
+
+        .contact tbody th {
+            width: 80px;
+            font-weight: normal;
+            text-align: left;
+            text-indent: 6px;
+        }
+
+        .contact tbody td:nth-of-type(1) {
+            width: 443px;
+        }
+
+        .contact tbody td:nth-of-type(2) {
+            width: 167px;
+        }
+
+        .title {
+            position: relative;
+        }
+
+        .title h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            margin: auto;
+            vertical-align: middle;
+
+            left: 6px;
+            top: -7px;
+            letter-spacing: 3px;
+        }
+
+        .title div {
+            font-size: 10.5pt;
+            display: inline-block;
+            position: absolute;
+
+            margin: auto;
+            vertical-align: middle;
+
+            top: 1px;
+            right: 8px;
+        }
+
+        .title div span {
+            display: inline-block;
+            position: relative;
+
+            text-align: right;
+        }
+
+        .title div span:nth-of-type(1) {
+            left: -2px;
+            width: 40px;
+        }
+
+        .title div span:nth-of-type(2) {
+            left: 0;
+        }
+
+        .title div span:nth-of-type(3) {
+            left: 0;
+            width: 20px;
+        }
+
+        .title div span:nth-of-type(4) {
+            left: 1px;
+        }
+
+        .title div span:nth-of-type(5) {
+            left: 4px;
+            width: 20px;
+        }
+
+        .title div span:nth-of-type(6) {
+            left: 2px;
+        }
+
+        .photo {
+            position: absolute;
+            top: 9px;
+        }
+
+        .photo div {
+            width: 110px;
+            height: 147px;
+            left: 38px;
+            position: relative;
+            margin: auto;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px #000 dashed;
+        }
+
+        .photo div .text {
+            display: block;
+            position: absolute;
+            width: 110px;
+            top: 62px;
+        }
+
+        .photo div .hidden {
+            display: none;
+        }
+
+        .photo img {
+            display: block;
+            position: relative;
+            top: -1px;
+            left: -1px;
+            width:112px;
+            height: 149px;
+        }
+
+        .fullname-furigana {
+            height: 30px;
+            font-size: 8pt;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .fullname-furigana th {
+            font-size: 11px;
+            letter-spacing: -1px;
+        }
+
+        .fullname {
+            height: 80px;
+        }
+
+        .fullname th {
+            font-size: 12px;
+        }
+
+        .birth-gender {
+            height: 42px;
+            font-size: 13px;
+        }
+
+        .birth-gender td div {
+            text-align: right;
+            position: relative;
+            right: 82px;
+        }
+
+        .birth-gender td div span {
+            text-align: right;
+            display: inline-block;
+            position: relative;
+
+        }
+
+        .birth-gender td div span:nth-of-type(1) {
+            width: 42px;
+        }
+
+        .birth-gender td div span:nth-of-type(2) {
+            left: 0;
+        }
+
+        .birth-gender td div span:nth-of-type(3) {
+            width: 36px;
+        }
+
+        .birth-gender td div span:nth-of-type(4) {
+            left: 0;
+        }
+
+        .birth-gender td div span:nth-of-type(5) {
+            left: -3px;
+            width: 42px;
+        }
+
+        .birth-gender td div span:nth-of-type(6) {
+            left: -5px;
+        }
+
+        .birth-gender td div span:nth-of-type(7) {
+            left: 1px;
+        }
+
+        .birth-gender td div span:nth-of-type(8) {
+            width: 24px;
+        }
+
+        .birth-gender td div span:nth-of-type(9) {
+            left: 0;
+        }
+
+        .birth-gender > td:nth-of-type(2) {
+            position: relative;
+            text-align: center;
+        }
+
+        .birth-gender > td:nth-of-type(2)::before {
+            font-size: 10pt;
+
+            content: '※性別';
+            display: block;
+            position: absolute;
+            top: 2px;
+            left: 7px;
+        }
+
+        .gender-info {
+            font-size: 9pt;
+            margin: 4px 10px;;
+        }
+
+        .address-primary-furigana,
+        .address-secondary-furigana {
+            height: 28px;
+            font-size: 11px;
+        }
+
+        .address-primary-furigana th,
+        .address-secondary-furigana th {
+            letter-spacing: -1px;
+        }
+
+        .address-primary-furigana td:nth-of-type(2),
+        .address-secondary-furigana td:nth-of-type(2) {
+            font-size: 13px;
+            text-indent: 7px;
+        }
+
+        .address-primary-postalcode,
+        .address-secondary-postalcode {
+            font-size: 12px;
+        }
+
+        .contact tbody .address-primary-postalcode th,
+        .contact tbody .address-primary-postalcode td,
+        .contact tbody .address-secondary-postalcode th,
+        .contact tbody .address-secondary-postalcode td {
+            line-height: normal;
+        }
+
+        .address-primary-postalcode th div,
+        .address-primary-postalcode td div,
+        .address-secondary-postalcode th div,
+        .address-secondary-postalcode td div {
+            position: relative;
+            top: -2px;
+            letter-spacing: 1px;
+        }
+
+        .address-primary-postalcode th div span,
+        .address-primary-postalcode td div span,
+        .address-secondary-postalcode th div span,
+        .address-secondary-postalcode td div span {
+            display: inline-block;
+        }
+
+        .address-primary-postalcode td:nth-of-type(2),
+        .address-secondary-postalcode td:nth-of-type(2) {
+            text-indent: 6px;
+        }
+
+        .address-secondary-postalcode th div span:nth-of-type(2),
+        .address-secondary-postalcode td div span:nth-of-type(2) {
+            position: absolute;
+            right: 10px;
+            font-size: 11px;
+            top: 2px;
+        }
+
+        .address-primary,
+        .address-secondary {
+            font-size: 12px;
+        }
+
+        .address-primary div,
+        .address-secondary div {
+            position: relative;
+            top: -4px;
+            height: 16px;
+        }
+
+        .address-primary {
+            height: 37px;
+        }
+
+        .address-secondary {
+            height: 36px;
+        }
+
+        .career {
+            border: 2px #000 solid;
+        }
+
+        .career td {
+            font-size: 10pt;
+        }
+
+        .career td:nth-of-type(1),
+        .career td:nth-of-type(2) {
+            text-align: center;
+        }
+
+        .career td:nth-of-type(3) {
+            text-indent: 6px;
+        }
+
+        .career td.center {
+            text-indent: 0;
+            text-align: center;
+        }
+
+        .career td.end::after {
+            content: '以上';
+            display: inline-block;
+            position: relative;
+            left: 440px;
+        }
+
+        .page2 {
+            position: relative;
+            top: 59px;
+        }
+
+        .career tr {
+            height: 10mm;
+        }
+
+        .career th,
+        .career td {
+            border: 1px #000 solid;
+            font-weight: normal;
+        }
+
+        .year {
+            width: 82px;
+        }
+
+        .month {
+            width: 55px;
+        }
+
+        .desc {
+            width: 553px;
+            font-size: 10pt;
+        }
+
+        .desc small {
+            font-size: 9pt;
+        }
+
+        .motivation {
+            border-collapse: collapse;
+            border: 2px #000 solid;
+            margin-top: 11px;
+            font-size: 10pt;
+        }
+
+        .motivation thead th,
+        .motivation tbody td {
+            width: 696px;
+
+            border: 1px #000 solid;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .motivation thead th {
+            height: 33px;
+            letter-spacing: 0.05rem;
+            text-indent: 6px;
+        }
+
+        .motivation tbody td {
+            height: 146px;
+            vertical-align: top;
+        }
+
+        .motivation tbody td p {
+            padding: 4px 6px;
+            max-height: 130px;
+            overflow: hidden;
+        }
+
+        .wishes {
+            border-collapse: collapse;
+            border: 2px #000 solid;
+            margin-top: 11px;
+            font-size: 10pt;
+        }
+
+        .wishes thead th,
+        .wishes tbody td {
+            width: 696px;
+            height: 36px;
+
+            border: 1px #000 solid;
+            font-weight: normal;
+            text-align: left;
+            text-indent: 6px;
+        }
+
+        .wishes thead th {
+            letter-spacing: 0.05rem;
+        }
+
+        .wishes thead th small {
+            font-size: 9pt;
+            letter-spacing: 0;
+
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+    <style>
+        {{{font_style}}}
+    </style>
+</head>
+<body>
+
+<!--
+{{!--
+-->
+<img alt="tracing-source1" src="tracing-source1.png"
+    style="
+        width: 190mm;
+        position:absolute;
+        top: 0;
+        left: 0;
+        z-index: -1000;
+        opacity: 0.5;
+    ">
+<img alt="tracing-source2"  src="tracing-source2.png"
+    style="
+        width: 190mm;
+        position:absolute;
+        top: 1034px;
+        left: 0;
+        z-index: -1000;
+        opacity: 0.5;
+    ">
+<!--
+--}}
+-->
+
+<div class="page1">
+    <table class="contact">
+        <thead>
+        <tr>
+            <td class="title" colspan="2">
+                <h1>履 歴 書</h1>
+                <div>
+                    <span>{{y}}</span>
+                    <span>年</span>
+                    <span>{{m}}</span>
+                    <span>月</span>
+                    <span>{{d}}</span>
+                    <span>日現在</span>
+                </div>
+            </td>
+            <!--
+            {{#with profile}}
+            -->
+            <td class="photo" rowspan="3">
+                <div>
+                    <!--
+                    {{#if photo_src}}
+                    -->
+                    <img alt="photo" src="{{photo_src}}">
+                    <!--
+                    {{else}}
+                    -->
+                    <span class="text">写真</span>
+                    <!--
+                    {{/if}}
+                    -->
+                </div>
+            </td>
+            <!--
+            {{/with}}
+            -->
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--
+        {{#with profile}}
+        -->
+        <tr class="fullname-furigana">
+            <th>ふりがな</th>
+            <td>{{name_furigana}}</td>
+        </tr>
+        <tr class="fullname">
+            <th>氏名</th>
+            <td>{{name}}</td>
+        </tr>
+        <tr class="birth-gender">
+            <th></th>
+            <td>
+                <div>
+                    <span>{{y}}</span>
+                    <span>年</span>
+                    <span>{{m}}</span>
+                    <span>月</span>
+                    <span>{{d}}</span>
+                    <span>日生</span>
+                    <span>（満</span>
+                    <span>{{age}}</span>
+                    <span>歳）</span>
+                </div>
+            </td>
+            <td>{{gender}}</td>
+        </tr>
+        <!--
+        {{/with}}
+        -->
+
+        <!--
+        {{#with contact_primary}}
+        -->
+        <tr class="address-primary-furigana">
+            <th>ふりがな</th>
+            <td>{{address_furigana}}</td>
+            <td>電話</td>
+        </tr>
+        <tr class="address-primary-postalcode">
+            <th>
+                <div>現住所</div>
+            </th>
+            <td>
+                <div>
+                    <span>〒 <span>{{postal_code}}</span></span>
+                </div>
+            </td>
+            <td>{{phone_number}}</td>
+        </tr>
+        <tr class="address-primary">
+            <th></th>
+            <td>
+                <div>{{address_line1}}</div>
+                <div>{{address_line2}}</div>
+            </td>
+            <td></td>
+        </tr>
+        <!--
+        {{/with}}
+        -->
+
+        <!--
+        {{#with contact_secondary}}
+        -->
+        <tr class="address-secondary-furigana">
+            <th>ふりがな</th>
+            <td>{{address_furigana}}</td>
+            <td>電話</td>
+        </tr>
+        <tr class="address-secondary-postalcode">
+            <th>
+                <div>連絡先</div>
+            </th>
+            <td>
+                <div>
+                    <span>〒 <span>{{postal_code}}</span></span>
+                    <span>（現住所以外に連絡を希望する場合のみ記入）</span>
+                </div>
+            </td>
+            <td>{{phone_number}}</td>
+        </tr>
+        <tr class="address-secondary">
+            <th></th>
+            <td>
+                <div>{{address_line1}}</div>
+                <div>{{address_line2}}</div>
+            </td>
+            <td></td>
+        </tr>
+        <!--
+        {{/with}}
+        -->
+        </tbody>
+    </table>
+    <table class="career">
+        <thead>
+        <tr>
+            <th class="year">年</th>
+            <th class="month">月</th>
+            <th class="desc">学　歴・職　歴<small>（各別にまとめて書く）</small></th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--
+        {{#each careers1}}
+        -->
+        <tr>
+            <td>{{y}}</td>
+            <td>{{m}}</td>
+            <td class="{{style}}">{{title}}</td>
+        </tr>
+        <!--
+        {{/each}}
+        -->
+        <!--
+        {{!--
+        -->
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="center">学歴</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入学</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　卒業</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="center">職歴</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <!--
+        --}}
+        -->
+        </tbody>
+    </table>
+    <p class="gender-info">※「性別」欄：記載は任意です。未記載とすることも可能です。</p>
+</div>
+
+<div class="page2">
+    <table class="career">
+        <thead>
+        <tr>
+            <th class="year">年</th>
+            <th class="month">月</th>
+            <th class="desc">学　歴・職　歴<small>（各別にまとめて書く）</small></th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--
+        {{#each careers2}}
+        -->
+        <tr>
+            <td>{{y}}</td>
+            <td>{{m}}</td>
+            <td>{{title}}</td>
+        </tr>
+        <!--
+        {{/each}}
+        -->
+        <!--
+        {{!--
+        -->
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　入社</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　退社</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="end">現在に至る</td>
+        </tr>
+        <!--
+        --}}
+        -->
+        <tr>
+            <th class="year">年</th>
+            <th class="month">月</th>
+            <th class="desc">免　許・資　格</th>
+        </tr>
+        <!--
+        {{#each qualifications}}
+        -->
+        <tr>
+            <td>{{y}}</td>
+            <td>{{m}}</td>
+            <td>{{title}}</td>
+        </tr>
+        <!--
+        {{/each}}
+        -->
+        <!--
+        {{!--
+        -->
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　取得</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　取得</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　取得</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　取得</td>
+        </tr>
+        <tr>
+            <td>8888</td>
+            <td>88</td>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　取得</td>
+        </tr>
+        <!--
+        --}}
+        -->
+        </tbody>
+    </table>
+
+    <!--
+    {{#with intent}}
+    -->
+    <table class="motivation">
+        <thead>
+        <tr>
+            <th>志望の動機、特技、自己PR、アピールポイントなど</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <p>
+                    {{{motivation}}}
+                    <!--
+                    {{!--
+                    -->
+                    <br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    ○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○<br>
+                    <!--
+                    --}}
+                    -->
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="wishes">
+        <thead>
+        <tr>
+            <th>本人希望記入欄<small>（特に給料、職種、勤務時間、勤務地、その他についての希望などがあれば記入）</small></th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--
+        {{#each wishes}}
+        -->
+        <tr>
+            <td>{{this}}</td>
+        </tr>
+        <!--
+        {{/each}}
+        -->
+        <!--
+        {{!--
+        -->
+        <tr>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○</td>
+        </tr>
+        <tr>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○</td>
+        </tr>
+        <tr>
+            <td>○○○○○　○○○○○　○○○○○　○○○○○　○○○○○○○○○○　○○○○○○○○○○</td>
+        </tr>
+        <!--
+        --}}
+        -->
+        </tbody>
+    </table>
+    <!--
+    {{/with}}
+    -->
+</div>
+</body>
+</html>

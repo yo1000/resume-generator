@@ -1,0 +1,60 @@
+[profile]
+photo = "./photo.png"
+name = "宮沢　賢治"
+name_furigana = "みやざわ　けんじ"
+birthdate = "1896-08-27"
+gender = "男"
+
+[contact_primary]
+postal_code = "025-0066"
+address_line1 = "岩手県　花巻市　桜町　1丁目　6番　19号"
+address_line2 = ""
+address_furigana = "いわてけん　はなまきし　さくらまち　1ちょうめ　6ばん　19ごう"
+phone_number = "000-0000-0000"
+
+[contact_secondary]
+postal_code = ""
+address_line1 = ""
+address_line2 = ""
+address_furigana = ""
+phone_number = ""
+
+[[career_schools]]
+year_month = "1914-04"
+title = "岩手大学 農学部 入学"
+
+[[career_schools]]
+year_month = "1918-03"
+title = "岩手大学 農学部 卒業"
+
+[[career_jobs]]
+year_month = "1921-04"
+title = "岩手県立花巻農学校 入職"
+
+[[career_jobs]]
+year_month = "1926-02"
+title = "岩手県立花巻農学校 退職"
+
+[[career_jobs]]
+year_month = "1926-03"
+title = "羅須地人協会 設立"
+
+[[qualifications]]
+year_month = "1918-03"
+title = "高等学校教諭一種免許状"
+
+[[qualifications]]
+year_month = "1926-04"
+title = "農業普及指導員"
+
+[intent]
+motivation = """
+私はこれまで、地域に根ざした農業指導や生活支援活動を個人で行ってきました。
+羅須地人協会では、住居を開放し、農民の方々と共に働き、学び、考える場を自主的に運営し、日々の営みを通じて社会の根幹にある「人の暮らし」や「生き方」に深く向き合ってきました。
+しかしながら、活動が長期化するにつれて体調面での限界を感じるようになり、持続可能な形でより多くの人々に貢献するためには、志を同じくする組織の一員として力を尽くすことが次の一歩だと考えるようになりました。
+御社が掲げるビジョンには深く共感しており、これまで培ってきた現場での経験と、生活者に寄り添う姿勢を活かしながら、共によりよい社会づくりに携わっていきたいと考えております。
+"""
+wishes = [
+    "イーハトーブでの勤務を希望いたします。",
+    "また、体調に配慮した勤務環境をご相談できれば幸いです。"
+]

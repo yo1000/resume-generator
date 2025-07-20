@@ -1,0 +1,166 @@
+[profile]
+name = "AAAA　BBBB"
+name_furigana = "ああああ　いいいい"
+birthdate = "1234-05-06"
+gender = "CC"
+
+[contact_primary]
+postal_code = "777-8888"
+address_line1 = "DDDD EEEE FFFF"
+address_line2 = "GGGG HHHH IIII"
+address_furigana = "うううう　ええええ　おおおお　かかかか　きききき　くくくく"
+phone_number = "999-0000-1111"
+
+[contact_secondary]
+postal_code = "222-3333"
+address_line1 = "JJJJ KKKK LLLL"
+address_line2 = "MMMM NNNN OOOO"
+address_furigana = "けけけけ　ここここ　ささささ　しししし　すすすす　せせせせ"
+phone_number = "444-5555-6666"
+
+[[career_schools]]
+year_month = "2001-01"
+title = "PPPP QQQQ #1 入学"
+
+[[career_schools]]
+year_month = "2002-02"
+title = "RRRR SSSS #2 卒業"
+
+[[career_schools]]
+year_month = "2003-03"
+title = "TTTT UUUU #3 入学"
+
+[[career_schools]]
+year_month = "2004-04"
+title = "VVVV WWWW #4 卒業"
+
+[[career_jobs]]
+year_month = "2005-05"
+title = "XXXX YYYY #5 入社"
+
+[[career_jobs]]
+year_month = "2006-06"
+title = "ZZZZ AAAA #6 退社"
+
+[[career_jobs]]
+year_month = "2007-07"
+title = "BBBB CCCC #7 入社"
+
+[[career_jobs]]
+year_month = "2008-08"
+title = "DDDD EEEE #8 退社"
+
+[[career_jobs]]
+year_month = "2009-09"
+title = "FFFF GGGG #9 入社"
+
+[[career_jobs]]
+year_month = "2010-10"
+title = "HHHH IIII #10 退社"
+
+[[career_jobs]]
+year_month = "2011-11"
+title = "JJJJ KKKK #11 入社"
+
+[[career_jobs]]
+year_month = "2012-12"
+title = "LLLL MMMM #12 退社"
+
+[[career_jobs]]
+year_month = "2013-01"
+title = "NNNN OOOO #13 入社"
+
+[[career_jobs]]
+year_month = "2014-02"
+title = "PPPP QQQQ #14 退社"
+
+[[career_jobs]]
+year_month = "2015-03"
+title = "RRRR SSSS #15 入社"
+
+[[career_jobs]]
+year_month = "2016-04"
+title = "TTTT UUUU #16 退社"
+
+[[career_jobs]]
+year_month = "2017-05"
+title = "VVVV WWWW #17 入社"
+
+[[career_jobs]]
+year_month = "2018-06"
+title = "XXXX YYYY #18 退社"
+
+[[career_jobs]]
+year_month = "2019-07"
+title = "ZZZZ AAAA #19 入社"
+
+[[career_jobs]]
+year_month = "2020-08"
+title = "BBBB CCCC #20 退社"
+
+[[career_jobs]]
+year_month = "2021-09"
+title = "DDDD EEEE #21 入社"
+
+[[career_jobs]]
+year_month = "2022-10"
+title = "FFFF GGGG #22 退社"
+
+[[career_jobs]]
+year_month = "2023-11"
+title = "HHHH IIII #23 入社"
+
+[[qualifications]]
+year_month = "2001-01"
+title = "JJJJ KKKK #24"
+
+[[qualifications]]
+year_month = "2002-02"
+title = "LLLL MMMM #25"
+
+[[qualifications]]
+year_month = "2003-03"
+title = "NNNN OOOO #26"
+
+[[qualifications]]
+year_month = "2004-04"
+title = "PPPP QQQQ #27"
+
+[[qualifications]]
+year_month = "2005-05"
+title = "RRRR SSSS #28"
+
+[[qualifications]]
+year_month = "2006-06"
+title = "TTTT UUUU #29"
+
+[[qualifications]]
+year_month = "2030-06"
+title = "VVVV WWWW #30"
+
+[[qualifications]]
+year_month = "2031-07"
+title = "XXXX YYYY #31"
+
+[intent]
+motivation = """
+ZZZZZZZZZZ AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC DDDDDDDDDD
+EEEEEEEEEE FFFFFFFFFF GGGGGGGGGG HHHHHHHHHH IIIIIIIIII
+JJJJJJJJJJ KKKKKKKKKK LLLLLLLLLL MMMMMMMMMM NNNNNNNNNN
+OOOOOOOOOO PPPPPPPPPP QQQQQQQQQQ RRRRRRRRRR SSSSSSSSSS
+TTTTTTTTTT UUUUUUUUUU VVVVVVVVVV WWWWWWWWWW XXXXXXXXXX
+YYYYYYYYYY ZZZZZZZZZZ AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC
+DDDDDDDDDD EEEEEEEEEE FFFFFFFFFF GGGGGGGGGG HHHHHHHHHH
+IIIIIIIIII JJJJJJJJJJ KKKKKKKKKK LLLLLLLLLL MMMMMMMMMM
+NNNNNNNNNN OOOOOOOOOO PPPPPPPPPP QQQQQQQQQQ RRRRRRRRRR
+SSSSSSSSSS TTTTTTTTTT UUUUUUUUUU VVVVVVVVVV WWWWWWWWWW
+XXXXXXXXXX YYYYYYYYYY ZZZZZZZZZZ AAAAAAAAAA BBBBBBBBBB
+"""
+wishes = [
+    "CCCC DDDD",
+    "EEEE FFFF",
+    "GGGG HHHH",
+    "IIII JJJJ",
+    "KKKK LLLL",
+    "MMMM NNNN"
+]
