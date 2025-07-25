@@ -161,7 +161,10 @@ export default function generateResume(config) {
             fs.writeFileSync(`${outPath}.html`, out);
         }
 
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            headless: "new"
+        });
         const page = await browser.newPage();
 
         await page.setContent(out);
