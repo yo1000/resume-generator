@@ -26,8 +26,8 @@ export default function generateResume(config) {
 
         const birthdate = tomlParams.profile?.birthdate ? new Date(tomlParams.profile?.birthdate) : undefined;
         let age = birthdate ? today.getFullYear() - birthdate.getFullYear() : "";
-        if (birthdate && (today.getMonth() > birthdate.getMonth()
-            || (today.getMonth() === birthdate.getMonth() && today.getDate() >= birthdate.getDate()))) {
+        if (birthdate && (today.getMonth() < birthdate.getMonth()
+            || (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate()))) {
             age--;
         }
 
