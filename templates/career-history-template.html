@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>職務経歴書</title>
     <style>
+        @page {
+            size: A4 portrait;
+        }
+
         html {
             width: calc(210mm - 10mm - 10mm);
             height: calc(297mm - 10mm - 10mm);
@@ -22,10 +26,8 @@
         }
 
         .profile {
-            margin-left: 8px;
+            margin: 22px auto 20px;
             border-collapse: collapse;
-            margin-top: 22px;
-            margin-bottom: 20px;
         }
 
         .profile tbody tr > * {
@@ -192,7 +194,8 @@
         }
 
         h2 {
-            margin-left: 8px;
+            margin-left: auto;
+            margin-right: auto;
 
             font-weight: 600;
             font-size: 16px;
@@ -207,7 +210,6 @@
         }
 
         .career_histories .job h3 {
-            margin-left: 14px;
             margin: 14px 0 4px 14px;
             width: 678px;
             font-weight: normal;
