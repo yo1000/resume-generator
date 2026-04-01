@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import Handlebars from "handlebars"
 import puppeteer from "puppeteer";
+import {Marked} from "marked";
 
 export default function generateCareerHistory(config) {
     const today = new Date(config.issue_date);
@@ -15,16 +16,13 @@ export default function generateCareerHistory(config) {
             .replace(/\r/, `\n`);
 
         const tomlParams = toml.parse(tomlPath);
+        const marked = new Marked();
 
         const handlebarsParams = {
             profile: {
                 ...tomlParams.profile,
-                career_summaries: tomlParams.profile?.career_summary
-                    ?.trim()
-                    ?.replace(/\r\n|\r/g, "\n")
-                    ?.split(/\n\n/g)
-                    ?.map(s => s.replace(/\n/g, "<br>")),
-                links_not_empty: tomlParams.profile?.links?.length,
+                career_summary: marked.parse(tomlParams.profile?.career_summary),
+                has_links: tomlParams.profile?.links?.length,
                 links: tomlParams.profile?.links?.map(link => ({
                     url: link.url,
                     text: link.text ?? link.url
@@ -33,28 +31,22 @@ export default function generateCareerHistory(config) {
             career_histories: [
                 ...(tomlParams.career_histories?.map(history => ({
                     ...history,
-                    term_or_summary: (history.term || history.summary),
-                    works_not_empty: history.works?.length,
+                    has_term_or_summary: (history.term || history.summary),
+                    summary: history.summary ? marked.parse(history.summary) : undefined,
+                    has_works: history.works?.length,
                     works: (history.works?.map(work => ({
                         ...work,
                         name_or_term: (work.name || work.term),
                         role_or_stacks: (work.role || work.stacks?.length),
-                        stacks_not_empty: work.stacks?.length,
-                        desc: work.desc
-                            ?.trim()
-                            ?.replace(/\r\n|\r/g, "\n")
-                            ?.split(/\n/g)
-                            ?.join('<br>')
+                        has_responsibilities: (work.responsibilities?.length),
+                        has_stacks: work.stacks?.length,
+                        desc: marked.parse(work.desc)
                     })))
                 })) ?? [])
             ],
             promotion: {
                 ...tomlParams.promotion,
-                descs: tomlParams.promotion?.desc
-                    ?.trim()
-                    ?.replace(/\r\n|\r/g, "\n")
-                    ?.split(/\n\n/g)
-                    ?.map(s => s.replace(/\n/g, "<br>"))
+                desc: marked.parse(tomlParams.promotion?.desc)
             },
             y: today.getFullYear(),
             m: today.getMonth() + 1,
@@ -106,6 +98,8 @@ export default function generateCareerHistory(config) {
         await page.setContent(out);
         await page.pdf({
             ...config.pdf,
+            printBackground: true,
+            preferCSSPageSize: true,
             path: `${outPath}.pdf`
         });
 

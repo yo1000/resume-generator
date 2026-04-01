@@ -25,8 +25,16 @@
             margin: 0;
         }
 
+        p, li {
+            line-height: 1.5em;
+        }
+
+        em {
+            color: #ccc;
+        }
+
         .profile {
-            margin: 22px auto 20px;
+            margin: 22px auto 24px;
             border-collapse: collapse;
         }
 
@@ -55,10 +63,14 @@
         }
 
         .profile tbody th {
-            width: 75px;
+            width: 67px;
             font-weight: normal;
-            text-align: left;
-            padding: 0 0 0 7px;
+            border-right: 1px #000 solid;
+            text-align: center;
+        }
+
+        .profile tbody td {
+            padding: 0 7px;
         }
 
         .profile tbody td:nth-of-type(1) {
@@ -186,11 +198,33 @@
             text-decoration: none;
         }
 
-        .profile .skills p span:nth-of-type(n + 2)::before {
+        .profile .caption::before {
+            content: "□";
+            margin-right: 2px;
+        }
+
+        .profile .skills p {
+          margin-bottom: 3px;
+        }
+
+        .profile .skills ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .profile .skills ul li {
+            display: inline-block;
+        }
+
+        .profile .skills ul li::after {
             content: ",";
             display: inline-block;
             position: relative;
             padding-right: 2px;
+        }
+
+        .profile .skills ul li:last-of-type::after {
+          content: none;
         }
 
         h2 {
@@ -199,21 +233,24 @@
 
             font-weight: 600;
             font-size: 16px;
-            border-bottom: 1px solid #000;
+            border-bottom: 3px double #000;
             padding-bottom: 4px;
             padding-left: 8px;
             width: 694px;
         }
 
         .career_histories .job {
-            margin-top: 2px;
+            margin-bottom: 16px;
         }
 
         .career_histories .job h3 {
-            margin: 14px 0 4px 14px;
-            width: 678px;
+            margin: 14px 0 4px 8px;
+            width: 695px;
             font-weight: normal;
             font-size: 12px;
+            border-bottom: 1px #000 solid;
+            padding-bottom: 4px;
+            padding-left: 7px;
         }
 
         .career_histories .job .summary table {
@@ -225,6 +262,10 @@
             font-weight: normal;
             width: 48px;
             text-align: left;
+        }
+
+        .career_histories .job .works {
+            margin-bottom: 8px;
         }
 
         .career_histories .job .works::after {
@@ -249,6 +290,10 @@
             left: 16px;
             top: 8px;
             position: relative;
+        }
+
+        .career_histories .job .works .log:last-of-type {
+            padding-bottom: 24px;
         }
 
         /* Use only when making it similar to git-log. */
@@ -309,12 +354,34 @@
         }
 
         .career_histories .job .works .log p {
-            margin: 0 0 0 16px;
+            margin: 12px 0 0 16px;
             font-size: 11px;
             word-break: break-all;
         }
 
-        .pr {
+        .career_histories .job .works .log td ul {
+          padding: 0;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .career_histories .job .works .log ul li {
+          display: inline-block;
+        }
+
+        .career_histories .job .works .log ul li::after {
+          content: ",";
+          display: inline-block;
+          position: relative;
+          padding-right: 2px;
+        }
+
+        .career_histories .job .works .log ul li:last-of-type::after {
+            content: none;
+        }
+
+      .pr {
             border-collapse: collapse;
             margin: 14px;
         }
@@ -374,13 +441,7 @@
     <tr class="summary">
         <th>職務要約</th>
         <td>
-            <!--
-            {{#each career_summaries}}
-            -->
-            <p>{{{this}}}</p>
-            <!--
-            {{/each}}
-            -->
+            {{{career_summary}}}
         </td>
     </tr>
     <tr class="skills">
@@ -389,14 +450,16 @@
             <!--
             {{#each skills}}
             -->
-            <p>
-                {{caption}}<br>
+            <p class="caption">{{caption}}</p>
+            <ul>
                 <!--
                 {{#each items}}
-                --><span>{{this}}</span><!--
+                -->
+                <li>{{this}}</li>
+                <!--
                 {{/each}}
                 -->
-            </p>
+            </ul>
             <!--
             {{/each}}
             -->
@@ -424,7 +487,7 @@
         <th>リンク</th>
         <td>
             <!--
-            {{#if links_not_empty}}
+            {{#if has_links}}
             -->
             <ul>
                 <!--
@@ -458,7 +521,7 @@
 <!--
 {{#with career_histories}}
 -->
-<h2>職務内容</h2>
+<h2>職務詳細</h2>
 <div class="career_histories">
     <!--
     {{#each this}}
@@ -473,7 +536,7 @@
         -->
 
         <!--
-        {{#if term_or_summary}}
+        {{#if has_term_or_summary}}
         -->
         <section class="summary">
             <table>
@@ -494,7 +557,9 @@
                 -->
                 <tr>
                     <th></th>
-                    <td>{{summary}}</td>
+                    <td>
+                    {{{summary}}}
+                    </td>
                 </tr>
                 <!--
                 {{/if}}
@@ -507,7 +572,7 @@
         -->
 
         <!--
-        {{#if works_not_empty}}
+        {{#if has_works}}
         -->
         <section class="works">
             <!--
@@ -545,7 +610,7 @@
                     {{#if role}}
                     -->
                     <tr>
-                        <th>担当</th>
+                        <th>役割</th>
                         <td>{{role}}</td>
                     </tr>
                     <!--
@@ -553,7 +618,28 @@
                     -->
 
                     <!--
-                    {{#if stacks_not_empty}}
+                    {{#if has_responsibilities}}
+                    -->
+                    <tr>
+                        <th>担当</th>
+                        <td>
+                            <ul>
+                                <!--
+                                {{#each responsibilities}}
+                                -->
+                                <li>{{this}}</li>
+                                <!--
+                                {{/each}}
+                                -->
+                            </ul>
+                        </td>
+                    </tr>
+                    <!--
+                    {{/if}}
+                    -->
+
+                    <!--
+                    {{#if has_stacks}}
                     -->
                     <tr>
                         <th>技術スタック</th>
@@ -577,9 +663,7 @@
                 <!--
                 {{#if desc}}
                 -->
-                <p>
-                    {{{desc}}}
-                </p>
+                {{{desc}}}
                 <!--
                 {{/if}}
                 -->
@@ -708,11 +792,7 @@
     <tbody>
     <tr>
         <td>
-            <!--
-            {{#each descs}}
-            --><p>{{{this}}}</p><!--
-            {{/each}}
-            -->
+            {{{desc}}}
 
             <!--
             {{!--
