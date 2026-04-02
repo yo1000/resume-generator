@@ -5,6 +5,7 @@ import path from "path";
 import Handlebars from "handlebars"
 import puppeteer from "puppeteer";
 import {Marked} from "marked";
+import {JSDOM} from "jsdom";
 
 export default function generateCareerHistory(config) {
     const today = new Date(config.issue_date);
@@ -70,8 +71,15 @@ export default function generateCareerHistory(config) {
         };
 
         const buildHtml = Handlebars.compile(template);
-        const out = buildHtml(handlebarsParams);
+        const html = buildHtml(handlebarsParams);
 
+        const dom = new JSDOM(html);
+        const doc = dom.window.document;
+        const htmlElm = doc.querySelector("html");
+        htmlElm.style.width = `calc(${config.pdf.width} - ${config.pdf.margin.left} - ${config.pdf.margin.right})`;
+        htmlElm.style.height = `calc(${config.pdf.height} - ${config.pdf.margin.top} - ${config.pdf.margin.bottom})`;
+
+        const out = dom.serialize();
         const outPath = `${path.resolve(config.out.location, config.out.careerHistoryFileName)}${
             config.out.withDate
                 ? `_${today.getFullYear()}-${
@@ -93,13 +101,11 @@ export default function generateCareerHistory(config) {
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
             headless: "new"
         });
-        const page = await browser.newPage();
 
+        const page = await browser.newPage();
         await page.setContent(out);
         await page.pdf({
             ...config.pdf,
-            printBackground: true,
-            preferCSSPageSize: true,
             path: `${outPath}.pdf`
         });
 

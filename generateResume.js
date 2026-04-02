@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import puppeteer from "puppeteer";
 import Handlebars from "handlebars";
+import {JSDOM} from "jsdom";
 
 export default function generateResume(config) {
     const today = new Date(config.issue_date);
@@ -138,8 +139,15 @@ export default function generateResume(config) {
         };
 
         const buildHtml = Handlebars.compile(template);
-        const out = buildHtml(handlebarsParams);
+        const html = buildHtml(handlebarsParams);
 
+        const dom = new JSDOM(html);
+        const doc = dom.window.document;
+        const htmlElm = doc.querySelector("html");
+        htmlElm.style.width = `calc(${config.pdf.width} - ${config.pdf.margin.left} - ${config.pdf.margin.right})`;
+        htmlElm.style.height = `calc(${config.pdf.height} - ${config.pdf.margin.top} - ${config.pdf.margin.bottom})`;
+
+        const out = dom.serialize();
         const outPath = `${path.resolve(config.out.location, config.out.resumeFileName)}${
             config.out.withDate
                 ? `_${today.getFullYear()}-${

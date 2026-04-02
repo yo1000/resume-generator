@@ -37,6 +37,7 @@ import {config} from "./config.js";
             }
         },
         pdf: {
+            ...config.pdf,
             format: process.env.RESUME_TEMPLATE_PDF_FORMAT ?? config.pdf.format,
             margin: {
                 top: process.env.RESUME_TEMPLATE_PDF_MARGIN_TOP ?? config.pdf.margin.top,
@@ -52,6 +53,18 @@ import {config} from "./config.js";
         fs.mkdirSync(mergedConfig.out.location);
     }
 
-    generateResume(mergedConfig);
-    generateCareerHistory(mergedConfig);
+    generateResume({
+        ...mergedConfig,
+        pdf: {
+            ...mergedConfig.pdf,
+            ...mergedConfig.pdf.resume
+        }
+    });
+    generateCareerHistory({
+        ...mergedConfig,
+        pdf: {
+            ...mergedConfig.pdf,
+            ...mergedConfig.pdf.careerHistory
+        }
+    });
 })();
