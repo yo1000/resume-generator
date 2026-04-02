@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import generate from "./generate.js";
 
 export default function generateResume(config) {
@@ -11,17 +11,10 @@ export default function generateResume(config) {
             const photoPath = path.resolve(config.data, data.profile?.photo ?? "");
             const existsPhoto = data.profile?.photo && fs.existsSync(photoPath);
             const photoExt = existsPhoto && path.extname(data.profile?.photo).toLowerCase();
-            const photoMedia = existsPhoto && photoExt === ".png" ? "image/png"
-                : photoExt === ".jpg" || photoExt === ".jpeg" ? "image/jpg"
-                    : photoExt === ".gif" ? "image/gif"
-                        : undefined;
+            const photoMedia = existsPhoto && resultMediaType(photoExt);
 
             const birthdate = data.profile?.birthdate ? new Date(data.profile?.birthdate) : undefined;
-            let age = birthdate ? issueDate.getFullYear() - birthdate.getFullYear() : "";
-            if (birthdate && (issueDate.getMonth() < birthdate.getMonth()
-                || (issueDate.getMonth() === birthdate.getMonth() && issueDate.getDate() < birthdate.getDate()))) {
-                age--;
-            }
+            let age = calcAge(issueDate, birthdate)
 
             const careers = [
                 ...([
@@ -130,4 +123,21 @@ export default function generateResume(config) {
             };
         }
     });
+}
+
+function resultMediaType(ext) {
+    return ext === ".png" ? "image/png"
+        : ext === ".jpg" || ext === ".jpeg" ? "image/jpg"
+            : ext === ".gif" ? "image/gif"
+                : undefined
+}
+
+function calcAge(date, birthDate) {
+    let age = birthDate ? date.getFullYear() - birthDate.getFullYear() : "";
+    if (birthDate && (date.getMonth() < birthDate.getMonth()
+        || (date.getMonth() === birthDate.getMonth() && date.getDate() < birthDate.getDate()))) {
+        age--;
+    }
+
+    return age;
 }

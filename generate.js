@@ -41,8 +41,8 @@ export default async function generate({config, dataPath, templatePath, buildPar
         const outPath = `${path.resolve(config.out.location, config.out.careerHistoryFileName)}${
             config.out.withDate
                 ? `_${today.getFullYear()}-${
-                    `${today.getMonth() + 1}`.padStart(2, "0")}-${
-                    `${today.getDate()}`.padStart(2, "0")}`
+                    String(today.getMonth() + 1).padStart(2, "0")}-${
+                    String(today.getDate()).padStart(2, "0")}`
                 : ""
         }`;
 

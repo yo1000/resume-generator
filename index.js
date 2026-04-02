@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import generateResume from "./generateResume.js";
 import generateCareerHistory from "./generateCareerHistory.js";
 import {config} from "./config.js";
