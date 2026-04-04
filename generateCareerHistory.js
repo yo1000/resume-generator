@@ -6,15 +6,15 @@ import generate from "./generate.js";
 export default function generateCareerHistory(config) {
     generate({
         config: config,
-        dataPath: path.resolve(config.data, "career_history.toml"),
-        templatePath: config.template.careerHistory,
-        outFileName: config.out.careerHistoryFileName,
+        dataPath: path.resolve(config.data.location, config.data.careerHistoryFileName),
+        templatePath: path.resolve(config.template.location, config.template.careerHistoryFileName),
+        outBaseName: config.out.careerHistoryBaseName,
         buildParams: ({data, issueDate}) => {
             const marked = new Marked();
             return {
                 profile: {
                     ...data.profile,
-                    career_summary: marked.parse(data.profile?.career_summary),
+                    career_summary: data.profile?.career_summary ? marked.parse(data.profile?.career_summary) : undefined,
                     has_links: data.profile?.links?.length,
                     links: data.profile?.links?.map(link => ({
                         url: link.url,
@@ -33,13 +33,13 @@ export default function generateCareerHistory(config) {
                             role_or_stacks: (work.role || work.stacks?.length),
                             has_responsibilities: (work.responsibilities?.length),
                             has_stacks: work.stacks?.length,
-                            desc: marked.parse(work.desc)
+                            desc: work.desc ? marked.parse(work.desc) : undefined
                         })))
                     })) ?? [])
                 ],
                 promotion: {
                     ...data.promotion,
-                    desc: marked.parse(data.promotion?.desc)
+                    desc: data.promotion?.desc ? marked.parse(data.promotion?.desc) : undefined
                 },
                 y: issueDate.getFullYear(),
                 m: issueDate.getMonth() + 1,

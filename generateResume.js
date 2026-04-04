@@ -5,11 +5,11 @@ import generate from "./generate.js";
 export default function generateResume(config) {
     generate({
         config: config,
-        dataPath: path.resolve(config.data, "resume.toml"),
-        templatePath: config.template.resume,
-        outFileName: config.out.resumeFileName,
+        dataPath: path.resolve(config.data.location, config.data.resumeFileName),
+        templatePath: path.resolve(config.template.location, config.template.resumeFileName),
+        outBaseName: config.out.resumeBaseName,
         buildParams: ({data, issueDate}) => {
-            const photoPath = path.resolve(config.data, data.profile?.photo ?? "");
+            const photoPath = path.resolve(config.data.location, data.profile?.photo ?? "");
             const existsPhoto = data.profile?.photo && fs.existsSync(photoPath);
             const photoExt = existsPhoto && path.extname(data.profile?.photo).toLowerCase();
             const photoMedia = existsPhoto && resultMediaType(photoExt);

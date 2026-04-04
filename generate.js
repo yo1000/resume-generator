@@ -11,12 +11,12 @@ import toml from "toml";
  * @param config
  * @param dataPath
  * @param templatePath
- * @param outFileName
+ * @param outBaseName
  * @param {({data, issueDate}) => object} buildParams
  * @returns {Promise<void>}
  */
-export default async function generate({config, dataPath, templatePath, outFileName, buildParams}) {
-    const today = new Date(config.issue_date);
+export default async function generate({config, dataPath, templatePath, outBaseName, buildParams}) {
+    const issueDate = new Date(config.issueDate);
 
     fs.createReadStream(dataPath).pipe(concat(async (tomlPath) => {
         const template = fs.readFileSync(templatePath, {encoding: `utf8`})
@@ -26,7 +26,7 @@ export default async function generate({config, dataPath, templatePath, outFileN
 
         const params = buildParams({
             data: toml.parse(tomlPath),
-            issueDate: today
+            issueDate: issueDate
         });
 
         const buildHtml = Handlebars.compile(template);
@@ -39,11 +39,15 @@ export default async function generate({config, dataPath, templatePath, outFileN
         htmlElm.style.height = `calc(${config.pdf.height} - ${config.pdf.margin.top} - ${config.pdf.margin.bottom})`;
 
         const out = dom.serialize();
-        const outPath = `${path.resolve(config.out.location, outFileName)}${
+        const outPath = `${path.resolve(config.out.location, outBaseName)}${
+            config.out.withProfileName && params.profile?.name
+                ? `_${params.profile.name.replace(/[\s　]+/, "")}`
+                : ""
+        }${
             config.out.withDate
-                ? `_${today.getFullYear()}-${
-                    String(today.getMonth() + 1).padStart(2, "0")}-${
-                    String(today.getDate()).padStart(2, "0")}`
+                ? `_${issueDate.getFullYear()}-${
+                    String(issueDate.getMonth() + 1).padStart(2, "0")}-${
+                    String(issueDate.getDate()).padStart(2, "0")}`
                 : ""
         }`;
 

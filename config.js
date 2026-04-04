@@ -1,13 +1,24 @@
+const now = new Date();
+const today = `${now.getFullYear()}-${
+    `${now.getMonth() + 1}`.padStart(2, "0")}-${
+    `${now.getDate()}`.padStart(2, "0")}`;
+
 export const config = {
-    data: "./data",
+    data: {
+        location: "./data",
+        resumeFileName: "resume.toml",
+        careerHistoryFileName: "career_history.toml"
+    },
     template: {
-        resume: "./templates/resume-template.html",
-        careerHistory: "./templates/career-history-template.html"
+        location: "./templates",
+        resumeFileName: "resume-template.html",
+        careerHistoryFileName: "career-history-template.html"
     },
     out: {
         location: "./out",
-        resumeFileName: "resume",
-        careerHistoryFileName: "career-history",
+        resumeBaseName: "resume",
+        careerHistoryBaseName: "career-history",
+        withProfileName: false,
         withDate: true
     },
     font: {
@@ -62,5 +73,6 @@ export const config = {
             `
         }
     },
+    issueDate: today,
     debug: false
 };
