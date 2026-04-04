@@ -1,89 +1,98 @@
 [profile]
-name = "AAAA　BBBB"
+name = "Familyname　Givenname"
 career_summary = """
-CCCC
-DDDD
+Career Summary
 
-EEEE
-FFFF
-GGGG
+career summary
+CAREER SUMMARY
 
-HHHH
+aaaaaaaaaa bbbbbbbbbb
+AAAAAAAAAA BBBBBBBBBB
+
+cccccccccc dddddddddd
+CCCCCCCCCC DDDDDDDDDD
 """
 
 [[profile.skills]]
-caption = "IIII"
-items = ["JJJJ", "KKKK"]
+caption = "Caption"
+items = ["Item1", "Item2", "Item3"]
 
 [[profile.skills]]
-caption = "LLLL"
-items = ["MMMM", "NNNN", "OOOO"]
+caption = "caption"
+items = ["item1", "item2", "item3"]
+
+[[profile.skills]]
+caption = "CAPTION"
+items = ["ITEM1", "ITEM2", "ITEM3"]
 
 [[profile.links]]
-text = "PPPP"
-url = "QQQQ"
+text = "Link Text"
+url = "https://url.example.com"
 
 [[profile.links]]
-url = "RRRR"
+url = "https://url-only.example.com"
 
 [[career_histories]]
-company = "SSSS"
-term = "TTTT"
-summary = "UUUU"
+company = "Career Histories"
+term = "Term - Term"
+summary = """
+Summary Summary
 
-[[career_histories.works]]
-name = "VVVV"
-term = "WWWW"
-role = "XXXX"
-stacks = ["YYYY", "ZZZZ"]
-desc = """
-AAAA
-BBBB
-CCCC
+summary summary
+SUMMARY SUMMARY
 """
 
 [[career_histories.works]]
-name = "DDDD"
-term = "EEEE"
-role = "FFFF"
-stacks = ["GGGG", "HHHH", "IIII"]
+name = "Works Name"
+term = "Term - Term"
+role = "Role"
+responsibilities = ["Resp", "Onsi", "Bili", "Ties"]
+stacks = ["Stack1", "Stack2"]
 desc = """
-JJJJ
-KKKK
-LLLL
-MMMM
+Desc
+
+desc
+DESC
+"""
+
+[[career_histories.works]]
+name = "works name"
+term = "term - term"
+role = "role"
+responsibilities = ["resp", "onsi", "bili", "ties"]
+stacks = ["stack1", "stack2"]
+desc = """
+Aaaa Bbbb Cccc Dddd
+
+aaaa bbbb cccc dddd
+AAAA BBBB CCCC DDDD
 """
 
 [[career_histories]]
-company = "NNNN"
-term = "OOOO"
-summary = "PPPP"
+company = "career histories"
+term = "term - term"
+summary = "summary"
 
 [[career_histories.works]]
-name = "QQQQ"
-term = "RRRR"
-role = "SSSS"
-stacks = ["TTTT", "UUUU"]
-desc = """
-VVVV
-WWWW
-"""
-
-[[career_histories.works]]
-name = "XXXX"
-term = "YYYY"
-role = "ZZZZ"
+name = "works name"
+term = "term - term"
+role = "role"
+responsibilities = []
 stacks = []
-desc = """
-"""
+desc = ""
 
 [promotion]
 desc = """
-AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC DDDDDDDDDD EEEEEEEEEE FFFFFFFFFF
-GGGGGGGGGG HHHHHHHHHH IIIIIIIIII JJJJJJJJJJ KKKKKKKKKK LLLLLLLLLL
-MMMMMMMMMM NNNNNNNNNN OOOOOOOOOO PPPPPPPPPP QQQQQQQQQQ RRRRRRRRRR
-SSSSSSSSSS TTTTTTTTTT UUUUUUUUUU VVVVVVVVVV WWWWWWWWWW XXXXXXXXXX
-YYYYYYYYYY ZZZZZZZZZZ
+Promotion Desc Promotion Desc Promotion Desc Promotion Desc Promotion Desc
+
+promotion desc promotion desc promotion desc promotion desc promotion desc
+PROMOTION DESC PROMOTION DESC PROMOTION DESC PROMOTION DESC PROMOTION DESC
+
+aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd eeeeeeeeee ffffffffff
+gggggggggg hhhhhhhhhh iiiiiiiiii jjjjjjjjjj kkkkkkkkkk llllllllll
+mmmmmmmmmm nnnnnnnnnn oooooooooo pppppppppp qqqqqqqqqq rrrrrrrrrr
+ssssssssss tttttttttt uuuuuuuuuu vvvvvvvvvv wwwwwwwwww xxxxxxxxxx
+yyyyyyyyyy zzzzzzzzzz
 
 AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC DDDDDDDDDD EEEEEEEEEE FFFFFFFFFF
 GGGGGGGGGG HHHHHHHHHH IIIIIIIIII JJJJJJJJJJ KKKKKKKKKK LLLLLLLLLL
