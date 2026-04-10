@@ -7,32 +7,32 @@ export const config = {
     data: {
         location: "./data",
         resumeFileName: "resume.toml",
-        careerHistoryFileName: "career_history.toml"
+        careerHistoryFileName: "career_history.toml",
     },
     template: {
         location: "./templates",
         resumeFileName: "resume-template.html",
-        careerHistoryFileName: "career-history-template.html"
+        careerHistoryFileName: "career-history-template.html",
     },
     out: {
         location: "./out",
         resumeBaseName: "resume",
         careerHistoryBaseName: "career-history",
         withProfileName: false,
-        withDate: true
+        withDate: true,
     },
     font: {
         serif: {
             name: "Noto Serif JP",
-            file: "./fonts/NotoSerifJP-VariableFont_wght.ttf"
+            file: "./fonts/NotoSerifJP-VariableFont_wght.ttf",
         },
         sansSerif: {
             name: "Noto Sans JP",
-            file: "./fonts/NotoSansJP-VariableFont_wght.ttf"
+            file: "./fonts/NotoSansJP-VariableFont_wght.ttf",
         },
         monospace: {
             name: "Noto Sans Mono",
-            file: "./fonts/NotoSansMono-VariableFont_wdth,wght.ttf"
+            file: "./fonts/NotoSansMono-VariableFont_wdth,wght.ttf",
         }
     },
     pdf: {
@@ -43,7 +43,7 @@ export const config = {
             top: "10mm",
             right: "10mm",
             bottom: "10mm",
-            left: "10mm"
+            left: "10mm",
         },
         preferCSSPageSize: true,
         printBackground: true,
@@ -70,9 +70,10 @@ export const config = {
                         </div>
                     </div>
                 </div>
-            `
-        }
+            `,
+        },
     },
     issueDate: today,
-    debug: false
+    mergeDocs: false,
+    debug: false,
 };
