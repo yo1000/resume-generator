@@ -18,7 +18,7 @@ import generatePdf from "./lib/generatePdf.js";
         fs.mkdirSync(mergedConfig.out.location);
     }
 
-    const genericParams = {
+    const genericData = {
         y: preparedConfig.issueDate.getFullYear(),
         m: preparedConfig.issueDate.getMonth() + 1,
         d: preparedConfig.issueDate.getDate(),
@@ -47,7 +47,7 @@ import generatePdf from "./lib/generatePdf.js";
     };
     const resumeData = {
         ...loadResumeData(preparedConfig),
-        ...genericParams,
+        ...genericData,
     };
     const resumeContent = await buildContent({
         config: resumeConfig,
@@ -65,7 +65,7 @@ import generatePdf from "./lib/generatePdf.js";
     };
     const careerHistoryData = {
         ...loadCareerHistoryData(preparedConfig),
-        ...genericParams,
+        ...genericData,
     };
     const careerHistoryContent = await buildContent({
         config: careerHistoryConfig,
