@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import loadResumeData from "./lib/loadResumeData.js";
-import loadCareerHistoryData from "./lib/loadCareerHistoryData.js";
+import path from "node:path";
 import {config} from "./config.js";
 import loadConfig from "./lib/loadConfig.js";
-import path from "node:path";
+import loadResumeData from "./lib/loadResumeData.js";
+import loadCareerHistoryData from "./lib/loadCareerHistoryData.js";
 import buildContent from "./lib/buildContent.js";
 import generatePdf from "./lib/generatePdf.js";
 
